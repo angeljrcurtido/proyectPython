@@ -26,6 +26,12 @@ model = MobileNetV2(weights='imagenet')
 
 # Inicializar el traductor de Google
 translator = Translator()
+
+# Ruta por defecto para verificar que el servidor funciona correctamente
+@app.route('/')
+def home():
+    return "Servidor corriendo correctamente"
+
 # Función para predecir la clase de la imagen y traducir
 def reconocer_objeto(img):
     img_array = image.img_to_array(img)
