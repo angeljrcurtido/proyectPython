@@ -812,5 +812,7 @@ def obtener_categorias_anuladas():
         return jsonify(categorias_anuladas), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-if __name__ == '__main__':
-    app.run(debug=True)
+# Configuración para obtener el puerto de la variable de entorno de Render
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Obtener el puerto desde la variable de entorno o usar 5000 por defecto
+    app.run(host="0.0.0.0", port=port)  # Escuchar en todas las interfaces
