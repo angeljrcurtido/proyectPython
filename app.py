@@ -4,6 +4,9 @@ from flask_cors import CORS  # Importar CORS
 import base64
 from bson.objectid import ObjectId
 import tensorflow as tf
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 import numpy as np
