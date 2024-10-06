@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify
-from pymongo import MongoClient
-from flask_cors import CORS  # Importar CORS
-import base64
-from bson.objectid import ObjectId
-import tensorflow as tf
-
+import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
+import tensorflow as tf
+from flask import Flask, request, jsonify
+from pymongo import MongoClient
+from flask_cors import CORS
+import base64
+from bson.objectid import ObjectId
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 import numpy as np
