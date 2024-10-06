@@ -1,28 +1,20 @@
-# Base Image
+# Usa una imagen base de Python 3.9 slim
 FROM python:3.9-slim
 
-# Set the working directory in the container
+# Establecer el directorio de trabajo en /app
 WORKDIR /app
 
-# Copy the requirements.txt file to the container
+# Copiar el archivo de dependencias
 COPY requirements.txt /app/requirements.txt
 
-# Install system dependencies and Python dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Python dependencies
+# Instalar las dependencias
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy the rest of the code to the container
+# Copiar el código de la aplicación
 COPY . /app
 
-# Expose the port your app runs on
+# Exponer el puerto 5000
 EXPOSE 5000
 
-# Command to run your app
+# Comando para ejecutar la aplicación
 CMD ["python", "app.py"]
